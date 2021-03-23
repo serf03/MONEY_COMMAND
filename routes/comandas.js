@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const Task = require('../models/Task');
+const Cm = require('../models/ComandasModels');
 
 router.get('/', async (req, res) => {
-  const  tasks = await Task.find();
-  res.json(tasks);
+  const  cm = await Cm.find();
+  res.json(cm);
  
 })
 
  router.get('/:id', async (req, res) => {
-     const  tasks = await Task.findById(req.params.id)
-     res.json(tasks);  
+     const  cm = await Cm.findById(req.params.id)
+     res.json(cm);  
 })
 
 router.post('/', async (req, res) => {
 
-    const tasks = await Task(req.body);
+    const cm = await Cm(req.body);
     tasks.save();
-    console.log(tasks);
+    console.log(cm);
     res.json("GUARDADO CORRECTAMENTE");
     
 })
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
 
 router.put('/:id', async (req, res) => {
-   await Task.findByIdAndUpdate(req.params.id, req.body);
+   await Cm.findByIdAndUpdate(req.params.id, req.body);
    res.json({
        ESTATUS: "FELICIDADES YA ACTUALIZA"
    })
@@ -33,7 +33,7 @@ router.put('/:id', async (req, res) => {
 
 
 router.delete('/:id', async (req, res) => {
-    await Task.findByIdAndDelete(req.params.id);
+    await Cm.findByIdAndDelete(req.params.id);
     res.json("ELIMINADO CORRECTAMENTE FELICIDADES");
  })
  
