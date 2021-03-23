@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 
     const cm = await Cm(req.body);
-    tasks.save();
+    Cm.save();
     console.log(cm);
     res.json("GUARDADO CORRECTAMENTE");
     
